@@ -61,7 +61,6 @@ const getApiAndEmit = socket => {
           return console.error(err.message);
       }
       console.log('Data received from Db:\n');
-      console.log(rows);
       socket.emit('showrows', rows);
   })
   db.close();
