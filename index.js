@@ -31,21 +31,23 @@ io.on('connection', socket => {
   }
   interval = setInterval(() => getApiAndEmit(socket), 1000);
 
-  console.log('a user connected');
+  console.log(socket.id + ' is connected');
 
   socket.on('add todo', (data) => {
     database_insert(data.id, data.name, data.task);
+    console.log(socket.id + ' add todo to the list.');
     console.log('Todo with an id of ' + data.id  + 'was added.');
   });
 
   socket.on('remove todo', (id) => {
     database_delete(id);
-    console.log('Todo with an id of ' + id + ' was removed.');
+    console.log(socket.id + ' add todo to the list.');
+    console.log(socket.id + ' removed todo with an id of ' + id + ' from the list.');
   });
 
   socket.on('update todo', (data) => {
     database_update(data.id, data.name, data.task);
-    console.log('Todo with an id of ' + data.id + ' was updated.');
+    console.log(socket.id + ' updated todo with the id of ' + data.id);
   });
 
   socket.on('disconnect', () => {

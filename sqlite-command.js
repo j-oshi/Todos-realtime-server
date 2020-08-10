@@ -61,7 +61,7 @@ function database_update(id, name, complete) {
             return console.log(err.message);
         }
         // get the last insert id
-        console.log(`A row has been inserted with rowid ${this.changes}`);
+        console.log(`A row has been updated with rowid ${this.changes}`);
     });
 
     db.close();
