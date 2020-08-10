@@ -35,13 +35,11 @@ io.on('connection', socket => {
 
   socket.on('add todo', (data) => {
     database_insert(data.id, data.name, data.task);
-    console.log(socket.id + ' add todo to the list.');
-    console.log('Todo with an id of ' + data.id  + 'was added.');
+    console.log('User with session id of ' + socket.id + ' added todo with id of  ' + data.id  + ' to the list.');
   });
 
   socket.on('remove todo', (id) => {
     database_delete(id);
-    console.log(socket.id + ' add todo to the list.');
     console.log(socket.id + ' removed todo with an id of ' + id + ' from the list.');
   });
 
